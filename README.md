@@ -13,8 +13,7 @@ Onedrive Directory Index 世纪互联版
 [https://cloud.tsuasahi.com](https://cloud.tsuasahi.com)  
 
 ## change log:  
-20-2-20: 添加nexmoe主题
-20-2-20: 添加ass|ssa|vtt字幕支持 
+20-2-20: 添加nexmoe主题,添加ass|ssa|vtt字幕支持 
   
 ## 需求:
 1. PHP空间,PHP 5.6+ 打开curl支持  
