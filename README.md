@@ -2,17 +2,17 @@
 
 Onedrive Directory Index 世纪互联版
 ##
-改自[oneindex2-in](https://github.com/lzx8589561/oneindex2-in)
+改自[Oneindex2-in](https://github.com/lzx8589561/oneindex2-in)
 
 ## 功能:
 不用服务器空间,不走服务器流量,  
 
-直接列onedrive目录,文件直链下载.  
+直接列OneDrive目录,文件直链下载.  
 
-## demo
+## Demo
 [https://cloud.tsuasahi.com](https://cloud.tsuasahi.com)  
 
-## change log:  
+## Change log:  
 20-2-20: 添加nexmoe主题,添加ass|ssa|vtt字幕支持 
   
 ## 需求:
@@ -21,7 +21,7 @@ Onedrive Directory Index 世纪互联版
 3. Oneindex 程序   
 
 ## 安装:
-1. 复制oneindex到服务器,设置` config/ ` `config/base.php`  `cache/` 可读写  
+1. 复制Oneindex到服务器,设置` config/ ` `config/base.php`  `cache/` 可读写  
 2. 访问[https://portal.azure.cn](https://portal.azure.cn) 
 登录账号后在左边栏找到 `Azure Active Directory` -> `应用注册`
 新注册应用,名称任意重定向URI填写站点地址
@@ -90,7 +90,7 @@ php one.php upload:file demo.zip /test/d.zip
 ## 可配置项
 配置在 `config/base.php` 文件中:  
 
-**onedrive共享的起始目录:**  
+**OneDrive共享的起始目录:**  
 ```
 'onedrive_root'=> '', //默认为根目录
 ```  
@@ -101,16 +101,19 @@ php one.php upload:file demo.zip /test/d.zip
 ```  
   
 **去掉链接中的 /?/ :**  
-需要添加apache/nginx/iis的rewrite的配置文件  
-参考程序根目录下的:`.htaccess`或`nginx.conf`或`Web.config`  
-```
-  //在config/base.php 中
-  'root_path' => '?' 
-```
-改为  
-
-```
-    'root_path' => '' 
+需要配置伪静态,并开启管理页面内的 `去掉/?/` : 
+ `Apache` 参考程序根目录下的`.htaccess`
+ `Nginx` 伪静态配置:
+```  
+if (!-f $request_filename){
+	set $rule_0 1$rule_0;
+}
+if (!-d $request_filename){
+	set $rule_0 2$rule_0;
+}
+if ($rule_0 = "21"){
+	rewrite ^/(.*)$ /index.php?/$1 last;
+}
 ```  
   
 **缓存时间:**  
@@ -124,8 +127,6 @@ php one.php upload:file demo.zip /test/d.zip
   'cache_expire_time' => 300, //缓存过期时间 /秒
   'cache_refresh_time' => 60, //缓存刷新时间 /秒
 ```
-
-
 
 
 ## Q&A:  
