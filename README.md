@@ -21,19 +21,20 @@ Onedrive Directory Index 世纪互联版
 3. Oneindex 程序   
 
 ## 安装:
-1. 复制Oneindex到服务器,设置` config/ ` `config/base.php`  `cache/` 可读写  
-2. 访问[https://portal.azure.cn](https://portal.azure.cn) 
-登录账号后在左边栏找到 `Azure Active Directory` -> `应用注册`
-新注册应用,名称任意重定向URI填写站点地址
-添加API权限 `Sharepoint` -> `委托的权限` -> `Files.Read & Read user files` 勾选后更新权限
-获取应用ID和密钥,添加密钥时有效时期选择1年内,记下应用ID和密钥
-进入 [世纪互联Office365主页](https://portal.partner.microsoftonline.cn/Home) ,登录后选择OneDrive
-记下网址-my.sharepoint.cn前的内容,例如上面显示网址为example-my.sharepoint.cn,则记下example
-3. 浏览器访问,分别填写`应用ID` `应用机密(密钥)` `回调地址(重定向URI)` `世纪互联域名前缀` 绑定账号
+1. 复制Oneindex到服务器,设置` config/ ` `config/base.php`  `cache/` 可读写     
+2. 访问[https://portal.azure.cn](https://portal.azure.cn)    
+登录账号后在左边栏找到 `Azure Active Directory` -> `应用注册`   
+新注册应用,名称任意重定向URI填写站点地址   
+添加API权限 `Sharepoint` -> `委托的权限` -> `Files.Read & Read user files` 勾选后更新权限   
+获取应用ID和密钥,添加密钥时有效时期选择1年内,记下应用ID和密钥   
+进入 [世纪互联Office365主页](https://portal.partner.microsoftonline.cn/Home) ,登录后选择OneDrive   
+记下网址-my.sharepoint.cn前的内容,例如上面显示网址为example-my.sharepoint.cn,则记下example   
+3. 浏览器访问,分别填写`应用ID` `应用机密(密钥)` `回调地址(重定向URI)` `世纪互联域名前缀` 绑定账号   
 4. 略作等待,即可使用 
 
 ## 计划任务  
-[可选]**推荐配置**,非必需。后台定时刷新缓存,可增加前台访问的速度  
+[可选]**推荐配置**,非必需.    
+后台定时刷新缓存,可增加前台访问的速度     
 `crontab -e` 进行编辑
 ```
 # 每小时刷新一次token
@@ -59,6 +60,7 @@ Onedrive Directory Index 世纪互联版
 
 ## 命令行功能  
 仅能在php cli模式下运行  
+
 **清除缓存:**  
 ```
 php one.php cache:clear
@@ -101,9 +103,9 @@ php one.php upload:file demo.zip /test/d.zip
 ```  
   
 **去掉链接中的 /?/ :**  
-需要配置伪静态,并开启管理页面内的 `去掉/?/` : 
- `Apache` 参考程序根目录下的`.htaccess`
- `Nginx` 伪静态配置:
+需要配置伪静态,并开启管理页面内的 `去掉/?/` :     
+ `Apache` 参考程序根目录下的`.htaccess`    
+ `Nginx` 伪静态配置:   
 ```  
 if (!-f $request_filename){
 	set $rule_0 1$rule_0;
@@ -134,5 +136,5 @@ if ($rule_0 = "21"){
 A: 不需要,全局管理员开出来的子账号就可以,不过该域名在office365必须要有管理员  
 
 **Q: 文件上传后,不能即时在程序页面显示出来?**  
-A: 有缓存,可以在config/base.php设置缓存时间. 或在后台刷新缓存
+A: 有缓存,可以在config/base.php设置缓存时间,或在后台刷新缓存
 
