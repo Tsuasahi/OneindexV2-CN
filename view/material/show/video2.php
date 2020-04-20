@@ -4,7 +4,7 @@
 <link class="dplayer-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/dashjs/dist/dash.all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
-<script src="https://cloud.tsuasahi.com/view/js/subtitles-octopus.js"></script>
+<script src="view/js/subtitles-octopus.js"></script>
 <div class="mdui-container-fluid">
 	<br>
 	<div id="dplayer"></div>
